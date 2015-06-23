@@ -14,7 +14,7 @@ ONBUILD RUN java -XX:MaxPermSize=256m -Xmx1024M -jar cq-publish-4503.jar -unpack
 ONBUILD ADD https://raw.githubusercontent.com/ggotti/aem_author/master/org.apache.sling.commons.log.LogManager.config /aem/crx-quickstart/install
 
 # Installs AEM
-ONBUILD RUN python aemInstaller.py -i cq-publish-4503.jar -r publisher -p 4503
+ONBUILD RUN python aemInstaller.py -i cq-publish-4503.jar -r publish -p 4503
 
 ONBUILD WORKDIR /aem/crx-quickstart/bin
 #Replaces the port within the quickstart file with the standard publisher port
