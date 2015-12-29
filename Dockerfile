@@ -11,7 +11,8 @@ ONBUILD WORKDIR /aem
 ONBUILD RUN java -XX:MaxPermSize=256m -Xmx1024M -jar cq-publish-4503.jar -unpack -r publish -p 4503
 
 # Add customised log file, to print the logging to standard out.
-ONBUILD ADD https://raw.githubusercontent.com/ggotti/aem_author/master/org.apache.sling.commons.log.LogManager.config /aem/crx-quickstart/install
+ONBUILD RUN mkdir /aem/crx-quickstart/install
+ONBUILD ADD https://raw.githubusercontent.com/ggotti/aem_author/master/org.apache.sling.commons.log.LogManager.config /aem/crx-quickstart/install/org.apache.sling.commons.log.LogManager.config
 
 # Installs AEM
 ONBUILD RUN python aemInstaller.py -i cq-publish-4503.jar -r publish -p 4503
